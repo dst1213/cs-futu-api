@@ -16,11 +16,11 @@ namespace cs_futu_api.common
         {
             client = new TcpClient();
 
-            LogHelper.Info("准备建立连接");
+            LogHelper.Debug("准备建立连接");
 
             client.Connect(host, port);
 
-            LogHelper.Info("连接建立");
+            LogHelper.Debug("连接建立");
         }
 
         public void Start()
@@ -33,7 +33,7 @@ namespace cs_futu_api.common
 
         public void Close()
         {
-            //LogHelper.Info("关闭连接");
+            LogHelper.Info("关闭连接");
             client.Close();
         }
     }
