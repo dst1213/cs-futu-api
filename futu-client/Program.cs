@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-
+using cs_futu_api.common;
 using cs_futu_api.quote;
 
 namespace futu_client
@@ -17,8 +17,6 @@ namespace futu_client
             var portNum = 11111;
 
             var tradeHkCtx = new OpenHKTradeContext(hostName, portNum);
-
-
 
             tradeHkCtx.Close();
 
