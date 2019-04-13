@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace cs_futu_api.common
 {
     public class OpenContextBase
-    {        
+    {
         private TcpClient client;
 
-        public OpenContextBase(string host,int port,bool isAsyncConnect=true,bool isEncrypt= false)
+        public OpenContextBase(string host, int port, bool isAsyncConnect = true, bool isEncrypt = false)
         {
             client = new TcpClient();
 
@@ -21,6 +21,17 @@ namespace cs_futu_api.common
             client.Connect(host, port);
 
             LogHelper.Debug("连接建立");
+
+        }
+
+        public bool CheckTrdEnv()
+        {
+            return true;
+        }
+
+        public bool CheckAccIdAndAccIndex()
+        {
+            return true;
         }
 
         public void Start()

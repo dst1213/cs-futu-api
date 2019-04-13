@@ -49,9 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="common\constant\TRADE.cs" />
     <Compile Include="common\HandlerContext.cs" />
     <Compile Include="common\LogHelper.cs" />
-    <Compile Include="common\Market.cs" />
+    <Compile Include="common\constant\Market.cs" />
     <Compile Include="common\OpenContextBase.cs" />
     <Compile Include="common\pb\Common.cs" />
     <Compile Include="common\pb\GetGlobalState.cs" />
@@ -112,7 +113,7 @@
     <Compile Include="common\pb\TrdUpdateOrder.cs" />
     <Compile Include="common\pb\TrdUpdateOrderFill.cs" />
     <Compile Include="common\pb\Verification.cs" />
-    <Compile Include="common\TrdEnv.cs" />
+    <Compile Include="common\constant\TrdEnv.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="quote\OpenHKTradeContext.cs" />
     <Compile Include="quote\OpenQuoteContext.cs" />
