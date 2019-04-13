@@ -1,0 +1,114 @@
+syntax = "proto3";
+package Qot_GetWarrant;
+
+import "Common.proto";
+import "Qot_Common.proto";
+
+message C2S
+{
+    int32 begin = 1; //数据起始点
+    int32 num =  2; //请求数据个数，最大200
+    int32 sortField = 3;//Qot_Common.SortField,根据哪个字段排序
+    bool ascend = 4;//升序ture, 降序false
+
+	//以下为筛选条件，可选字段，不填表示不过滤
+	Qot_Common.Security owner = 5;	//所属正股
+	repeated int32 typeList = 6; //Qot_Common.WarrantType,窝轮类型过滤列表
+	repeated int32 issuerList = 7; //Qot_Common.Issuer,发行人过滤列表
+	string maturityTimeMin = 8; //到期日, 到期日范围的开始时间字符串
+	string maturityTimeMax = 9; //到期日范围的结束时间字符串
+	int32 ipoPeriod = 10; //Qot_Common.IpoPeriod,上市日
+	int32 priceType = 11; //Qot_Common.PriceType, 价内/价外
+	int32 status = 12; //Qot_Common.WarrantStatus, 窝轮状态
+	double curPriceMin = 13; //最新价过滤起点 
+	double curPriceMax = 14; //最新价过滤终点 	
+	double strikePriceMin = 15; //行使价过滤起点
+    double strikePriceMax = 16; //行使价过滤终点  
+    double streetMin = 17; //街货占比%过滤起点
+    double streetMax = 18; //街货占比%过滤终点
+	double conversionMin = 19; //换股比率过滤起点
+    double conversionMax = 20; //换股比率过滤终点	
+    uint64 volMin = 21; //成交量过滤起点
+    uint64 volMax = 22; //成交量过滤终点
+	double premiumMin = 23; //溢价%过滤起点
+    double premiumMax = 24; //溢价%过滤终点
+	double leverageRatioMin = 25; //杠杆比率过滤起点
+    double leverageRatioMax = 26; //杠杆比率过滤终点	
+	double deltaMin = 27;//对冲值过滤起点,仅认购认沽支持该字段过滤
+    double deltaMax = 28;//对冲值过滤终点,仅认购认沽支持该字段过滤
+	double impliedMin = 29; //引伸波幅过滤起点,仅认购认沽支持该字段过滤
+    double impliedMax = 30; //引伸波幅过滤终点,仅认购认沽支持该字段过滤	
+	double recoveryPriceMin = 31; //收回价过滤起点,仅牛熊证支持该字段过滤
+    double recoveryPriceMax = 32; //收回价过滤终点,仅牛熊证支持该字段过滤
+    double priceRecoveryRatioMin = 33;//正股距收回价%过滤起点,仅牛熊证支持该字段过滤
+    double priceRecoveryRatioMax = 34;//正股距收回价%过滤终点,仅牛熊证支持该字段过滤
+}
+
+message WarrantData
+{
+	//静态数据项
+    Qot_Common.Security stock = 1; //股票
+    Qot_Common.Security owner = 2; //所属正股
+	int32 type = 3; //Qot_Common.WarrantType,窝轮类型
+    int32 issuer = 4; //Qot_Common.Issuer,发行人
+	string maturityTime = 5; //到期日
+	double maturityTimestamp = 6; //到期日时间戳
+	string listTime = 7; //上市时间
+	double listTimestamp = 8; //上市时间戳
+	string lastTradeTime = 9; //最后交易日
+	double lastTradeTimestamp = 10; //最后交易日时间戳
+	double recoveryPrice = 11; //收回价,仅牛熊证支持该字段
+	double conversionRatio = 12; //换股比率
+	int32 lotSize = 13; //每手数量
+	double strikePrice = 14; //行使价	
+	double lastClosePrice = 15; //昨收价		
+	string name = 16; //名称	
+
+	//动态数据项
+	double curPrice = 17; //当前价
+	double priceChangeVal = 18; //涨跌额
+    double changeRate = 19; //涨跌幅%	
+	int32 status = 20; //Qot_Common.WarrantStatus, 窝轮状态	
+    double bidPrice = 21; //买入价	
+	double askPrice = 22; //卖出价
+    int64 bidVol = 23; //买量
+	int64 askVol = 24; //卖量
+	int64 volume = 25; //成交量
+    double turnover = 26; //成交额	
+	double score = 27; //综合评分
+	double premium = 28; //溢价%
+    double breakEvenPoint = 29; //打和点	
+    double leverage = 30; //杠杆比率（倍）
+    double ipop = 31; //价内/价外%			
+	double priceRecoveryRatio = 32; //正股距收回价%，仅牛熊证支持该字段
+	double conversionPrice = 33; //换股价
+	double streetRate = 34; //街货占比	
+	int64 streetVol = 35; //街货量
+	double amplitude = 36; //振幅%
+	int64 issueSize = 37; //发行量	        
+	double highPrice = 39; //最高价
+    double lowPrice = 40; //最低价	
+	double impliedVolatility = 41; //引申波幅,仅认购认沽支持该字段
+    double delta = 42; //对冲值,仅认购认沽支持该字段
+	double effectiveLeverage = 43; //有效杠杆
+}
+
+message S2C
+{
+    bool lastPage = 1; //是否最后一页了,false:非最后一页,还有窝轮记录未返回; true:已是最后一页
+	int32 allCount = 2; //该条件请求所有数据的个数
+    repeated WarrantData warrantDataList = 3; //窝轮数据
+}
+
+message Request
+{
+	C2S c2s = 1;
+}
+
+message Response
+{
+	int32 retType = 1; //RetType,返回结果
+	string retMsg = 2;
+	int32 errCode = 3;
+	S2C s2c = 4;
+}

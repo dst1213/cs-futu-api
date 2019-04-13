@@ -1,0 +1,28 @@
+syntax = "proto3";
+package KeepAlive;
+
+import "Common.proto";
+
+message C2S
+{
+	int64 time = 1; //客户端发包时的格林威治时间戳，单位秒
+}
+
+message S2C
+{
+	int64 time = 1; //服务器回包时的格林威治时间戳，单位秒
+}
+
+message Request
+{
+	C2S c2s = 1;
+}
+
+message Response
+{
+	int32 retType = 1; //RetType,返回结果
+	string retMsg = 2;
+	int32 errCode = 3;
+	
+	S2C s2c = 4;
+}

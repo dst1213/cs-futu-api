@@ -1,0 +1,38 @@
+syntax = "proto3";
+package Qot_RequestHistoryKLQuota;
+
+import "Common.proto";
+import "Qot_Common.proto";
+
+message DetailItem
+{
+	Qot_Common.Security security = 1;	//拉取的股票
+	string requestTime = 2;			//拉取的时间字符串
+	int64 requestTimeStamp = 3;				//拉取的时间戳
+}
+
+message C2S
+{
+	bool bGetDetail = 2;	//是否返回详细拉取过的历史纪录
+}
+
+message S2C
+{
+	int32 usedQuota = 1;	      //已使用过的额度，即当前周期内已经下载过多少只股票。
+	int32 remainQuota = 2;       //剩余额度
+	repeated DetailItem detailList = 3;	  //每只拉取过的股票的下载时间
+}
+
+message Request
+{
+	C2S c2s = 1;
+}
+
+message Response
+{
+	int32 retType = 1; //RetType,返回结果
+	string retMsg = 2;
+	int32 errCode = 3;
+	
+	S2C s2c = 4;
+}

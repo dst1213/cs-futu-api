@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cs-futu-api", "cs-futu-api\cs-futu-api.csproj", "{36622CDC-F968-4C23-8704-BD2E575662C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "futu-client", "futu-client\futu-client.csproj", "{23CE4EB4-8ED7-4F6D-928F-5BA284853576}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36622CDC-F968-4C23-8704-BD2E575662C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36622CDC-F968-4C23-8704-BD2E575662C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36622CDC-F968-4C23-8704-BD2E575662C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36622CDC-F968-4C23-8704-BD2E575662C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23CE4EB4-8ED7-4F6D-928F-5BA284853576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23CE4EB4-8ED7-4F6D-928F-5BA284853576}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23CE4EB4-8ED7-4F6D-928F-5BA284853576}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23CE4EB4-8ED7-4F6D-928F-5BA284853576}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E56A6848-3CB2-4847-92A3-B9D6F0EBB118}
+	EndGlobalSection
+EndGlobal

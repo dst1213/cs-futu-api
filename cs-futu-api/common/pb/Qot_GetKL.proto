@@ -1,0 +1,33 @@
+syntax = "proto3";
+package Qot_GetKL;
+
+import "Common.proto";
+import "Qot_Common.proto";
+
+message C2S
+{
+	int32 rehabType = 1; //Qot_Common.RehabType,复权类型
+	int32 klType = 2; //Qot_Common.KLType,K线类型
+	Qot_Common.Security security = 3; //股票
+	int32 reqNum = 4; //请求K线根数
+}
+
+message S2C
+{
+	Qot_Common.Security security = 1; //股票
+	repeated Qot_Common.KLine klList = 2; //k线点
+}
+
+message Request
+{
+	C2S c2s = 1;
+}
+
+message Response
+{
+	int32 retType = 1; //RetType,返回结果
+	string retMsg = 2;
+	int32 errCode = 3;
+
+	S2C s2c = 4;
+}

@@ -1,0 +1,38 @@
+syntax = "proto3";
+package Qot_RequestHistoryKL;
+
+import "Common.proto";
+import "Qot_Common.proto";
+
+message C2S
+{
+	int32 rehabType = 1; //Qot_Common.RehabType,复权类型
+	int32 klType = 2; //Qot_Common.KLType,K线类型
+	Qot_Common.Security security = 3; //股票市场以及股票代码
+	string beginTime = 4; //开始时间字符串
+	string endTime = 5; //结束时间字符串
+	int32 maxAckKLNum = 6; //最多返回多少根K线，如果未指定表示不限制
+	int64 needKLFieldsFlag = 7; //指定返回K线结构体特定某几项数据，KLFields枚举值或组合，如果未指定返回全部字段
+	bytes nextReqKey = 8; //分页请求key
+}
+
+message S2C
+{
+	Qot_Common.Security security = 1;
+	repeated Qot_Common.KLine klList = 2; //K线数据
+	bytes nextReqKey = 3; //分页请求key。一次请求没有返回所有数据时，下次请求带上这个key，会接着请求
+}
+
+message Request
+{
+	C2S c2s = 1;
+}
+
+message Response
+{
+	int32 retType = 1; //RetType,返回结果
+	string retMsg = 2;
+	int32 errCode = 3;
+	
+	S2C s2c = 4;
+}

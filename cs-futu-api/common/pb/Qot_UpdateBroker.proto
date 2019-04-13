@@ -1,0 +1,21 @@
+syntax = "proto3";
+package Qot_UpdateBroker;
+
+import "Common.proto";
+import "Qot_Common.proto";
+
+message S2C
+{
+	Qot_Common.Security security = 1; //股票
+	repeated Qot_Common.Broker brokerAskList = 2; //经纪Ask(卖)盘
+	repeated Qot_Common.Broker brokerBidList = 3; //经纪Bid(买)盘
+}
+
+message Response
+{
+	int32 retType = 1; //RetType,返回结果
+	string retMsg = 2;
+	int32 errCode = 3;
+	
+	S2C s2c = 4;
+}

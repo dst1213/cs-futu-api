@@ -1,0 +1,52 @@
+syntax = "proto3";
+package Qot_GetOptionChain;
+
+import "Common.proto";
+import "Qot_Common.proto";
+
+enum OptionCondType
+{
+	OptionCondType_Unknow = 0;
+	OptionCondType_WithIn = 1; //价内
+	OptionCondType_Outside = 2; //价外
+}
+
+message C2S
+{
+	Qot_Common.Security owner = 1; //期权标的股
+	int32 type = 2; //Qot_Common.OptionType,期权类型,可选字段,不指定则表示都返回
+	int32 condition = 3; //OptionCondType,价内价外,可选字段,不指定则表示都返回
+	string beginTime = 4; //期权到期日开始时间
+	string endTime = 5; //期权到期日结束时间,时间跨度最多一个月
+}
+
+message OptionItem
+{
+	Qot_Common.SecurityStaticInfo call = 1; //看涨,不一定有该字段,由请求条件决定
+	Qot_Common.SecurityStaticInfo put = 2; //看跌,不一定有该字段,由请求条件决定
+}
+
+message OptionChain
+{
+	string strikeTime = 1; //行权日
+	repeated OptionItem option = 2; //期权信息
+	double strikeTimestamp = 3; //行权日时间戳
+}
+
+message S2C
+{
+	repeated OptionChain optionChain = 1; //期权链
+}
+
+message Request
+{
+	C2S c2s = 1;
+}
+
+message Response
+{
+	int32 retType = 1; //RetType,返回结果
+	string retMsg = 2;
+	int32 errCode = 3;
+	S2C s2c = 4;
+}

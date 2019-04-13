@@ -1,0 +1,32 @@
+syntax = "proto3";
+package Trd_GetHistoryOrderFillList;
+
+import "Common.proto";
+import "Trd_Common.proto";
+
+message C2S
+{
+	Trd_Common.TrdHeader header = 1; //交易公共参数头
+	Trd_Common.TrdFilterConditions filterConditions = 2; //过滤条件
+}
+
+message S2C
+{
+	Trd_Common.TrdHeader header = 1; //交易公共参数头
+	repeated Trd_Common.OrderFill orderFillList = 2; //历史成交列表
+}
+
+message Request
+{
+	C2S c2s = 1;
+}
+
+message Response
+{
+	//以下3个字段每条协议都有，注释说明在InitConnect.proto中
+	int32 retType = 1;
+	string retMsg = 2;
+	int32 errCode = 3;
+	
+	S2C s2c = 4;
+}

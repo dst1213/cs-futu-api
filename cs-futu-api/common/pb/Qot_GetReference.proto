@@ -1,0 +1,36 @@
+syntax = "proto3";
+package Qot_GetReference;
+
+import "Common.proto";
+import "Qot_Common.proto";
+
+enum ReferenceType
+{
+	ReferenceType_Unknow = 0; 
+	ReferenceType_Warrant = 1; //正股相关的窝轮
+}
+
+message C2S
+{
+	Qot_Common.Security security = 1; //股票
+	int32 referenceType = 2; // ReferenceType, 相关类型
+}
+
+message S2C
+{
+	repeated Qot_Common.SecurityStaticInfo staticInfoList = 2; //相关股票列表
+}
+
+message Request
+{
+	C2S c2s = 1;
+}
+
+message Response
+{
+	int32 retType = 1; //RetType,返回结果
+	string retMsg = 2;
+	int32 errCode = 3;
+	
+	S2C s2c = 4;
+}

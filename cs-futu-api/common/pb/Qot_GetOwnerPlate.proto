@@ -1,0 +1,35 @@
+syntax = "proto3";
+package Qot_GetOwnerPlate;
+
+import "Common.proto";
+import "Qot_Common.proto";
+
+message C2S
+{
+	repeated Qot_Common.Security securityList = 1; //股票
+}
+
+message SecurityOwnerPlate
+{
+	Qot_Common.Security security = 1; //股票
+	repeated Qot_Common.PlateInfo plateInfoList = 2; //所属板块
+}
+
+message S2C
+{
+	repeated SecurityOwnerPlate ownerPlateList = 1; //所属板块信息
+}
+
+message Request
+{
+	C2S c2s = 1;
+}
+
+message Response
+{
+	int32 retType = 1; //RetType,返回结果
+	string retMsg = 2;
+	int32 errCode = 3;
+	
+	S2C s2c = 4;
+}

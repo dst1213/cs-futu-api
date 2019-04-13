@@ -1,0 +1,126 @@
+syntax = "proto3";
+package Qot_GetSecuritySnapshot;
+
+import "Common.proto";
+import "Qot_Common.proto";
+
+message C2S
+{
+	repeated Qot_Common.Security securityList = 1; //股票
+}
+
+ // 正股类型额外数据
+message EquitySnapshotExData
+{
+    int64 issuedShares = 1; // 发行股本,即总股本
+	double issuedMarketVal = 2; // 总市值 =总股本*当前价格
+    double netAsset = 3; // 资产净值
+    double netProfit = 4; // 盈利（亏损）
+    double earningsPershare = 5; // 每股盈利
+    int64 outstandingShares = 6; // 流通股本
+	double outstandingMarketVal = 7; // 流通市值 =流通股本*当前价格
+    double netAssetPershare = 8; // 每股净资产
+    double eyRate = 9; // 收益率
+    double peRate = 10; // 市盈率
+    double pbRate = 11; // 市净率
+	double peTTMRate = 12; // 市盈率TTM
+}
+
+ // 涡轮类型额外数据
+message WarrantSnapshotExData
+{
+    double conversionRate = 1; //换股比率
+    int32 warrantType = 2; //Qot_Common.WarrantType,涡轮类型
+    double strikePrice = 3; //行使价
+    string maturityTime = 4; //到期日时间字符串
+    string endTradeTime = 5; //最后交易日时间字符串
+    Qot_Common.Security owner = 6; //所属正股 
+    double recoveryPrice = 7; //收回价
+    int64 streetVolumn = 8; //街货量
+    int64 issueVolumn = 9; //发行量
+    double streetRate = 10; //街货占比
+    double delta = 11; //对冲值
+    double impliedVolatility = 12; //引申波幅
+    double premium = 13; //溢价
+	double maturityTimestamp = 14; //到期日时间戳
+	double endTradeTimestamp = 15; //最后交易日时间戳
+}
+
+ // 期权类型额外数据
+message OptionSnapshotExData
+{
+	int32 type = 1; //Qot_Common.OptionType,期权
+	Qot_Common.Security owner = 2; //标的股
+	string strikeTime = 3; //行权日
+    double strikePrice = 4; //行权价
+	int32 contractSize = 5; //每份合约数
+	int32 openInterest = 6; //未平仓合约数
+	double impliedVolatility = 7; //隐含波动率
+	double premium = 8; //溢价
+	double delta = 9; //希腊值 Delta
+    double gamma = 10; //希腊值 Gamma
+	double vega = 11; //希腊值 Vega
+    double theta = 12; //希腊值 Theta
+    double rho = 13; //希腊值 Rho
+	double strikeTimestamp = 14; //行权日时间戳  
+}
+
+ //基本快照数据
+message SnapshotBasicData
+{
+	Qot_Common.Security security = 1; //股票
+	int32 type = 2; //Qot_Common.SecurityType,股票类型
+	bool isSuspend = 3; //是否停牌
+	string listTime = 4; //上市时间字符串
+	int32 lotSize = 5; //每手数量
+	double priceSpread = 6; //价差
+	string updateTime = 7; //更新时间字符串
+	double highPrice = 8; //最新价
+	double openPrice = 9; //开盘价
+	double lowPrice = 10; //最低价
+	double lastClosePrice = 11; //昨收价
+	double curPrice = 12; //最新价
+	int64 volume = 13; //成交量
+	double turnover = 14; //成交额
+	double turnoverRate = 15; //换手率
+	double listTimestamp = 16; //上市时间戳
+	double updateTimestamp = 17; //更新时间戳
+	double askPrice = 18;//卖价
+    double bidPrice = 19;//买价
+	int64 askVol = 20;//卖量
+    int64 bidVol = 21;//买量
+	bool enableMargin = 22; // 是否可融资，如果为true，后两个字段才有意义
+    double mortgageRatio = 23; // 股票抵押率,是不带百分号的数字，例如50%是50
+    double longMarginInitialRatio = 24; // 融资初始保证金率,是不带百分号的数字，例如50%是50
+    bool enableShortSell = 25; // 是否可卖空，如果为true，后三个字段才有意义
+    double shortSellRate = 26; // 卖空参考利率,是不带百分号的数字，例如50%是50
+    int64 shortAvailableVolume = 27; // 剩余可卖空数量（股）
+    double shortMarginInitialRatio = 28; // 卖空（融券）初始保证金率,是不带百分号的数字，例如50%是50
+}
+
+message Snapshot
+{
+	SnapshotBasicData basic = 1; //快照基本数据
+	EquitySnapshotExData equityExData = 2; //正股快照额外数据
+	WarrantSnapshotExData warrantExData = 3; //窝轮快照额外数据
+	OptionSnapshotExData optionExData = 4; //期权快照额外数据
+}
+
+message S2C
+{
+	repeated Snapshot snapshotList = 1; //股票快照
+}
+
+message Request
+{
+	C2S c2s = 1;
+}
+
+message Response
+{
+	int32 retType = 1; //RetType,返回结果
+	string retMsg = 2;
+	int32 errCode = 3;
+	
+	S2C s2c = 4;
+}
