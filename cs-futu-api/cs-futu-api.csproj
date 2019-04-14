@@ -57,6 +57,7 @@
     <Compile Include="common\HandlerContext.cs" />
     <Compile Include="common\LogHelper.cs" />
     <Compile Include="common\constant\Market.cs" />
+    <Compile Include="common\NetManager.cs" />
     <Compile Include="common\OpenContextBase.cs" />
     <Compile Include="common\pb\Common.cs" />
     <Compile Include="common\pb\GetGlobalState.cs" />
