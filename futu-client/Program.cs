@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using cs_futu_api.common;
-using cs_futu_api.quote;
+using cs_futu_api.trade;
 
 namespace futu_client
 {
