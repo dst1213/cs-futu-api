@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace cs_futu_api.common
 {
-    public enum TrdEnv
+    public class FutuConnMng
     {
-        REAL,
-        SIMULATE
+
     }
 }

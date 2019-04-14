@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace cs_futu_api.common
+namespace cs_futu_api.trade.trade_query
 {
-    public enum TrdEnv
+    public class AccInfoQuery
     {
-        REAL,
-        SIMULATE
+
     }
 }

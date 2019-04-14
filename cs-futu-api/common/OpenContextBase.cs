@@ -10,15 +10,15 @@ namespace cs_futu_api.common
 {
     public class OpenContextBase
     {
-        private TcpClient client;
+        private TcpClient netMgr;
 
         public OpenContextBase(string host, int port, bool isAsyncConnect = true, bool isEncrypt = false)
         {
-            client = new TcpClient();
+            netMgr = new TcpClient();
 
             LogHelper.Debug("准备建立连接");
 
-            client.Connect(host, port);
+            netMgr.Connect(host, port);
 
             LogHelper.Debug("连接建立");
 
@@ -45,7 +45,7 @@ namespace cs_futu_api.common
         public void Close()
         {
             LogHelper.Info("关闭连接");
-            client.Close();
+            netMgr.Close();
         }
     }
 }

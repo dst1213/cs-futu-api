@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="common\constant\TRADE.cs" />
+    <Compile Include="common\FutuConnMng.cs" />
     <Compile Include="common\HandlerContext.cs" />
     <Compile Include="common\LogHelper.cs" />
     <Compile Include="common\constant\Market.cs" />
@@ -114,14 +115,17 @@
     <Compile Include="common\pb\TrdUpdateOrderFill.cs" />
     <Compile Include="common\pb\Verification.cs" />
     <Compile Include="common\constant\TrdEnv.cs" />
+    <Compile Include="common\Results.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="quote\OpenHKTradeContext.cs" />
+    <Compile Include="trade\OpenHKTradeContext.cs" />
     <Compile Include="quote\OpenQuoteContext.cs" />
     <Compile Include="quote\quote_response_handler\TickerHandlerBase.cs" />
+    <Compile Include="trade\OpenTradeContextBase.cs" />
+    <Compile Include="trade\trade_query\AccInfoQuery.cs" />
+    <Compile Include="trade\trade_query\UnlockTrade.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="tools\" />
-    <Folder Include="trade\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config\log4net.config">

@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace cs_futu_api.common
 {
-    public enum TrdEnv
+    /// <summary>
+    /// 返回信息
+    /// </summary>
+    public struct RET_MSG
     {
-        REAL,
-        SIMULATE
+        int RET;
+        string MSG;
     }
 }

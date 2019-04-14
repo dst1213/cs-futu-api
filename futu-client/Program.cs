@@ -18,6 +18,12 @@ namespace futu_client
 
             var tradeHkCtx = new OpenHKTradeContext(hostName, portNum);
 
+            LogHelper.Info(TrdEnv.SIMULATE.ToString());
+
+            var accInfo = tradeHkCtx.AccinfoQuery(TrdEnv.SIMULATE);
+
+            LogHelper.Info(accInfo.ToString());
+
             tradeHkCtx.Close();
 
             Console.ReadKey();
