@@ -16,5 +16,15 @@ namespace cs_futu_api.common
         {
 
         }
+
+        public void Start()
+        {
+
+        }
+
+        public void Stop()
+        {
+
+        }
     }
 }
