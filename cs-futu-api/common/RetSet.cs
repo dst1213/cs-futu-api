@@ -1,4 +1,5 @@
-﻿using System;
+﻿using cs_futu_api.common.constant;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,16 +10,16 @@ namespace cs_futu_api.common
     /// <summary>
     /// 返回信息
     /// </summary>
-    public struct RET_MSG
+    public class RET_MSG
     {
-        int RET;
-        string MSG;
+        public int RET;
+        public string MSG;
     }
 
-    public struct RET_MSG_REQ
+    public class RET_MSG_REQ
     {
-        int RET;
-        string MSG;
-        object REQ;
+        public int RET = GlobleConst.RET_OK;
+        public string MSG;
+        public object REQ;
     }
 }

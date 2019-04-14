@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,8 @@ namespace cs_futu_api.trade.trade_query
             request.C2S.Header.AccID = accId;
             request.C2S.Header.TrdEnv = trdEnv;
             request.C2S.Header.TrdMarket = trdMarket;
+
+            request.WriteTo(new CodedOutputStream(new byte[] { }));
         }
 
         public void UnpackRsp(object rspPb)

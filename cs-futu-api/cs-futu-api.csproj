@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="common\constant\GlobleConst.cs" />
+    <Compile Include="common\constant\ProtoFMT.cs" />
+    <Compile Include="common\constant\ProtoId.cs" />
     <Compile Include="common\constant\TRADE.cs" />
     <Compile Include="common\FutuConnMng.cs" />
     <Compile Include="common\HandlerContext.cs" />
@@ -116,6 +119,7 @@
     <Compile Include="common\pb\Verification.cs" />
     <Compile Include="common\constant\TrdEnv.cs" />
     <Compile Include="common\RetSet.cs" />
+    <Compile Include="common\SysConfig.cs" />
     <Compile Include="common\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="trade\OpenHKTradeContext.cs" />
