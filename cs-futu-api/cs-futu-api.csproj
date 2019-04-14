@@ -115,7 +115,8 @@
     <Compile Include="common\pb\TrdUpdateOrderFill.cs" />
     <Compile Include="common\pb\Verification.cs" />
     <Compile Include="common\constant\TrdEnv.cs" />
-    <Compile Include="common\Results.cs" />
+    <Compile Include="common\RetSet.cs" />
+    <Compile Include="common\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="trade\OpenHKTradeContext.cs" />
     <Compile Include="quote\OpenQuoteContext.cs" />
