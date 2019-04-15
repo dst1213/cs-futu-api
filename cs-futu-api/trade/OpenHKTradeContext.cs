@@ -17,7 +17,7 @@ namespace cs_futu_api.trade
 
         public object AccinfoQuery(TrdEnv trdEnv)
         {
-
+            
             return "";
         }
 

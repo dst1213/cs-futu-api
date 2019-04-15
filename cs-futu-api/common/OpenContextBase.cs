@@ -24,6 +24,16 @@ namespace cs_futu_api.common
 
         }
 
+        public delegate void DgPack(params object[] args);
+        public delegate void DgUnpack(params object[] args);
+
+
+        public RET_MSG_OBJ GetSyncQueryProcessor(DgPack dgPack, DgUnpack dgUnpack)
+        {
+            //NetMgr.SyncQuery(connId, reqStr)
+            return null;
+        }
+
         public bool CheckTrdEnv()
         {
             return true;

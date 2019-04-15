@@ -12,6 +12,16 @@ namespace cs_futu_api.common
         static private TcpClient netMgr = new TcpClient();
         static private readonly NetManager netManager = new NetManager();
 
+        public void SyncQuery()
+        {
+            
+        }
+
+        public void DoSend(int connId, object protoInfo,byte[] data)
+        {
+            netMgr.GetStream().Write(data,0,data.Length);
+        }
+
         public void Connect()
         {
 
@@ -24,7 +34,12 @@ namespace cs_futu_api.common
 
         public void Stop()
         {
+            this.Close();
+        }
 
+        public void Close()
+        {
+            netMgr.Close();
         }
     }
 }

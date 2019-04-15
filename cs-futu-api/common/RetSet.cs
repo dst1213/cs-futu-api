@@ -22,4 +22,11 @@ namespace cs_futu_api.common
         public string MSG;
         public object REQ;
     }
+
+    public class RET_MSG_OBJ
+    {
+        public int RET = GlobleConst.RET_OK;
+        public string MSG;
+        public object OBJ;
+    }
 }
